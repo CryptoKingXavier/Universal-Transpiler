@@ -1,140 +1,74 @@
-# Development of Decompiler and Transpiler with AI Integration
+# Java to Python to JavaScript Transpiler
+
+This project is a transpiler that converts Java code to Python and then to JavaScript. It also sets up a local HTTP server to serve the generated JavaScript file.
 
 ## Table of Contents
-- [Project Overview](#project-overview)
-- [Meet the Tech Lead](#meet-the-tech-lead)
-- [Objectives](#objectives)
-- [Project Phases](#project-phases)
-  - [Phase 1: Core Development](#phase-1-core-development)
-  - [Phase 2: AI Integration](#phase-2-ai-integration)
-  - [Phase 3: Testing and Optimization](#phase-3-testing-and-optimization)
-  - [Phase 4: Documentation and Deployment](#phase-4-documentation-and-deployment)
-- [Deliverables](#deliverables)
-- [Project Timeline](#project-timeline)
-- [Team Members](#team-members)
-- [Resources Required](#resources-required)
-- [Success Criteria](#success-criteria)
-- [Risks and Mitigation](#risks-and-mitigation)
-- [Getting Started](#getting-started)
-- [Navigating the Repository](#navigating-the-repository)
-- [Contribution Guidelines](#contribution-guidelines)
-- [License](#license)
-- [Contact](#contact)
+- [Overview](#overview)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Code Explanation](#code-explanation)
+  - [Imports](#imports)
+  - [Transpiler Class](#transpiler-class)
+  - [Main Execution](#main-execution)
+- [Logging](#logging)
+- [Error Handling](#error-handling)
 
-## Project Overview
+## Overview
+This script takes a Java file, converts it to Python, and then to JavaScript using the `transcrypt` tool. It also sets up a local HTTP server to serve the generated JavaScript file.
 
-**Project-X** is an innovative project focused on developing a sophisticated decompiler and transpiler with integrated AI capabilities. Our goal is to enhance code analysis, transformation, and optimization processes, making it easier for developers to analyze compiled software, migrate code between different languages, and automatically detect and fix errors.
-
-## Meet the Tech Lead
-
-Hello! I'm **CryptoKingXavier**, the Tech Lead and Lead Developer of Project-X. I am a MERN Stack Developer, Science Researcher, Tech Blogger, Web2 & Web3 Developer, and Blockchain Enthusiast. At Project-X, I lead the development team in building a universal transpiler software solution that will revolutionize the computer programming industry. Feel free to connect with me for any questions or discussions about the project!
-
-## Objectives
-
-1. **Develop a Decompiler**: A tool that translates machine code or bytecode into high-level source code for easier analysis.
-2. **Develop a Transpiler**: A tool that translates source code from one programming language to another.
-3. **Integrate AI**: AI technologies will be integrated to:
-   - Recognize common code patterns.
-   - Automate code refactoring.
-   - Detect and suggest fixes for code errors.
-
-## Project Phases
-
-### Phase 1: Core Development
-- **Decompiler Development**: Implement a decompiler that supports multiple target architectures.
-- **Transpiler Development**: Build a transpiler to handle a range of source and target programming languages.
-
-### Phase 2: AI Integration
-- **AI Research and Selection**: Identify and select suitable AI models and techniques.
-- **AI Algorithm Development**: Develop algorithms for code pattern recognition, automated refactoring, and error detection.
-- **AI Tool Integration**: Seamlessly integrate AI features with the decompiler and transpiler tools.
-
-### Phase 3: Testing and Optimization
-- Conduct extensive testing to ensure tools' accuracy and performance.
-- Optimize the tools based on feedback and performance metrics.
-
-### Phase 4: Documentation and Deployment
-- Create comprehensive documentation for users and developers.
-- Deploy the tools and provide initial support.
-
-## Deliverables
-
-1. **Decompiler Tool**: Functional decompiler supporting multiple architectures.
-2. **Transpiler Tool**: Fully operational transpiler for various programming languages.
-3. **AI Enhancements**: Integrated AI capabilities for pattern recognition, refactoring, and error detection.
-4. **Documentation**: Detailed user and developer manuals.
-5. **Support Plan**: Initial user support and maintenance strategy.
-
-## Project Timeline
-
-- **Phase 1**: Core Development - 3 months
-- **Phase 2**: AI Integration - 4 months
-- **Phase 3**: Testing and Optimization - 2 months
-- **Phase 4**: Documentation and Deployment - 1 month
-
-## Team Members
-
-- **Project Lead**: Enagu Kingsley
-- **Lead Developer**: [CryptoKingXavier](https://github.com/CryptoKingXavier)
-- **AI Specialist**: [Open Position]
-- **Quality Assurance**: Queendoline
-
-## Resources Required
-
-- Development tools and software.
-- AI frameworks and libraries.
-- Access to various programming language environments.
-- Testing hardware and software.
-
-## Success Criteria
-
-- Accurate and reliable decompiled and transpiled code.
-- Effective AI integration with measurable benefits in code analysis and optimization.
-- Positive feedback from initial users and successful deployment.
-
-## Risks and Mitigation
-
-- **Technical Complexity**: Mitigated through thorough research, development, and regular progress reviews.
-- **Integration Challenges**: Addressed through close collaboration between AI specialists and developers.
-- **Timeline Slippage**: Minimized by monitoring progress and adjusting schedules as needed.
-
-## Getting Started
-
-To start using or contributing to the project, please follow these steps:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/CryptoKingXavier/Universal-Transpiler.git
+## Setup
+1. **Install Python**: Ensure you have Python installed on your system.
+2. **Install Transcrypt**: You can install Transcrypt using pip:
+   ```sh
+   pip install transcrypt
    ```
-2. **Install Dependencies**:
-   Follow the instructions in the [installation guide](docs/installation.md).
+3. **Install Java to Python Transpiler**: Ensure you have the `java_to_python_transpiler` package installed.
 
-3. **Run the Project**:
-   Follow the steps in the [usage guide](docs/usage.md).
+## Usage
+1. Place your Java file in the same directory as the script.
+2. Run the script:
+   ```sh
+   python main.py
+   ```
 
-## Navigating the Repository
+## Code Explanation
 
-- **`/docs`**: Documentation files, including installation and usage guides.
-- **`/src`**: Source code for the decompiler, transpiler, and AI components.
-- **`/tests`**: Test scripts and test cases.
-- **`/scripts`**: Utility scripts for development and deployment.
-- **`/examples`**: Example code and sample inputs/outputs.
-- **`/ai-models`**: Pre-trained AI models and related files.
-- **`README.md`**: This file.
-- **`LICENSE`**: License information.
+### Imports
+The script starts by importing necessary modules:
+- `typing`: For type hinting.
+- `os.path` and `os`: For file operations and system commands.
+- `threading`: For running tasks in separate threads.
+- `sys`: For exiting the program.
+- `logging`: For logging messages.
+- `java_to_python_transpiler`: For converting Java to Python.
 
-## Contribution Guidelines
+### Transpiler Class
+The `Transpiler` class handles the conversion process.
 
-We welcome contributions from the community! Please read our [contributing guide](CONTRIBUTING.md) to learn how to get involved.
+#### `__init__` Method
+- Initializes the class with a Java file.
+- Checks if the file exists and is a Java file.
+- Sets the paths for the output Python, HTML, and JavaScript files.
 
-## License
+#### `run` Method
+- Starts a local HTTP server on port 8000.
 
-This project is licensed under the [MIT License](LICENSE).
+#### `java2py` Method
+- Converts the Java file to Python.
+- Writes the Python code to a file.
+- Calls the `py2js` method to convert Python to JavaScript.
 
-## Contact
+#### `py2js` Method
+- Writes an HTML file that includes the JavaScript file.
+- Runs the `transcrypt` tool to convert Python to JavaScript.
+- Starts the HTTP server in a separate thread.
 
-For any questions or suggestions, please contact the project team at [projectx](mailto:cryptokingxavier.binance@gmail.com).
+### Main Execution
+- Creates an instance of the `Transpiler` class.
+- Calls the `java2py` method to start the conversion process.
 
----
+## Logging
+The script uses the `logging` module to log messages. The log level is set to `DEBUG`, and the format includes the timestamp, log level, and message.
 
-*Project-X* - Building the Future of Code Analysis and Transformation.
+## Error Handling
+The script uses try-except blocks to handle errors during file operations and logs error messages.
