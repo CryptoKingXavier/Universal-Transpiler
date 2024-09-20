@@ -4,7 +4,7 @@ from threading import Thread
 from secrets import token_hex
 from os import makedirs, unlink
 from os.path import exists, join
-from transpile import Transpiler
+from server.transpile import Transpiler
 from flask import Flask, jsonify, request, send_from_directory
 
 
