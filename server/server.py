@@ -1,6 +1,5 @@
 from logging import info
 from http import HTTPStatus
-from threading import Thread
 from secrets import token_hex
 from os import makedirs, unlink
 from os.path import exists, join
@@ -62,9 +61,6 @@ def create_app() -> Flask:
             return send_from_directory(api.config["UPLOAD_FOLDER"], filename, as_attachment=True)
         except FileNotFoundError:
             return jsonify({"error": "⚠️ File not found! ⚠️"}), HTTPStatus.BAD_REQUEST.value
-        finally:
-            thread: Thread = Thread(target=unzip(join(api.config["UPLOAD_FOLDER"], filename)))
-            thread.start()
     
     return api
 
