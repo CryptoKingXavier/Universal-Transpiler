@@ -3,7 +3,7 @@ from shutil import rmtree
 from os.path import exists
 from threading import Thread
 from os import system, unlink
-from server.zipper import zip_file_and_folder
+from zipper import zip_file_and_folder
 from logging import basicConfig, DEBUG, info, error
 from java_to_python_transpiler import java_to_python_from_file, TranspilerFailure
 
@@ -49,6 +49,7 @@ class Transpiler:
             unlink(self.py_file)
             unlink(self.java_file)
             info(" ℹ️ Py2Js Process Completed! ℹ️")
+            return self.zip_filename
             
         except Exception as e:
             error(f" Failed to write to file. Reason: {e}")
@@ -65,6 +66,7 @@ class Transpiler:
                 unlink(self.py_file)
                 unlink(self.html_file)
                 rmtree(self.folder_to_zip)
+                return self.zip_filename
 
             # Running transcrypt in a separate thread
             info(" ℹ️ Starting Async Conversion! ℹ️")

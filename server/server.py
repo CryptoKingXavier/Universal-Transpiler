@@ -1,24 +1,19 @@
 from logging import info
+from flask_cors import CORS
 from http import HTTPStatus
-from secrets import token_hex
 from os import makedirs, unlink
 from os.path import exists, join
-from server.transpile import Transpiler
+from transpile import Transpiler
+from config import Config, ALLOWED_EXTENSIONS
 from flask import Flask, jsonify, request, send_from_directory
 
 
-def create_app() -> Flask:
+def create_app(config_class=Config) -> Flask:
     api: Flask = Flask(__name__)
-    api.secret_key  = token_hex(16)
+    api.config.from_object(Config)
     
-    # Configure upload folder
-    UPLOAD_FOLDER = "./database"
-    makedirs(UPLOAD_FOLDER) if not exists(UPLOAD_FOLDER) else None
-    
-    api.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-    
-    # Allowed file extensions
-    ALLOWED_EXTENSIONS = ["java", "py"]
+    # Allow all orgins to access all routes
+    CORS(api)
     
     # Helper function to check if the file has a valid extension
     def allowed_file(filename):
@@ -64,3 +59,6 @@ def create_app() -> Flask:
     
     return api
 
+
+if __name__ == "__main__":
+    create_app().run(debug=True)
