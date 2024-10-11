@@ -3,7 +3,7 @@ from flask_cors import CORS
 from http import HTTPStatus
 from os import makedirs, unlink
 from os.path import exists, join
-from transpile import Transpiler
+from server.transpile import Transpiler
 from config import Config, ALLOWED_EXTENSIONS
 from flask import Flask, jsonify, request, send_from_directory
 
