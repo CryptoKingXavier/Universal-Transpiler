@@ -58,7 +58,3 @@ def create_app(config_class=Config) -> Flask:
             return jsonify({"error": "⚠️ File not found! ⚠️"}), HTTPStatus.BAD_REQUEST.value
     
     return api
-
-
-if __name__ == "__main__":
-    create_app().run(debug=True)
