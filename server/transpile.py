@@ -3,7 +3,7 @@ from shutil import rmtree
 from os.path import exists
 from threading import Thread
 from os import system, unlink
-from zipper import zip_file_and_folder
+from server.zipper import zip_file_and_folder
 from logging import basicConfig, DEBUG, info, error
 from java_to_python_transpiler import java_to_python_from_file, TranspilerFailure
 
