@@ -2,7 +2,7 @@ flask
 flask-cors
 gunicorn
 transcrypt
-java_to_python_transpiler
+java-to-python-transpiler
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
